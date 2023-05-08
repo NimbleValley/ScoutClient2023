@@ -18,7 +18,7 @@ const sections = document.getElementsByClassName("section");
 for (var i = 0; i < sections.length; i++) {
     sections[i].style.display = "none";
 }
-sections[3].style.display = "flex";
+sections[0].style.display = "flex";
 
 
 

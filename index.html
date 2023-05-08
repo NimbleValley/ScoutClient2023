@@ -20,7 +20,12 @@
 <body>
     <div id="welcome-section" class="section">
         <h1>Scout Form</h1>
-        <div id="start-button" class="section-button" onclick="switchSection(0, 1)">Start</div>
+        <button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
+        <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
+        <div id="start-button" class="section-button" onclick="switchSection(0, 1); appendValues('1bsPFZIQ_MCcElY--ZMY9tYZBlsgvV_PjdT7rQoSE4uA', 'Sheet1', 'USER_ENTERED', [
+        ['A', 'B'],
+        ['C', 'D'],
+      ])">Start</div>
         <h3>FRC 2022-23</h3>
     </div>
     <div id="general-section" class="section">
@@ -152,7 +157,7 @@
     <div id="comments-section" class="section">
         <h1 style="text-align: center;">Final Comments</h1>
 
-        <textarea  cols="31" rows="5"></textarea>
+        <textarea cols="31" rows="5"></textarea>
 
         <div class="button-container">
             <div class="section-button" onclick="switchSection(4, 3)">Back</div>
@@ -166,5 +171,8 @@
     </div>
 </body>
 <script src="index.js"></script>
+<script src="post.js"></script>
+<script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+<script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
 
 </html>
