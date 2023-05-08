@@ -18,7 +18,7 @@ const sections = document.getElementsByClassName("section");
 for (var i = 0; i < sections.length; i++) {
     sections[i].style.display = "none";
 }
-sections[0].style.display = "flex";
+sections[3].style.display = "flex";
 
 
 
@@ -84,6 +84,7 @@ for (var i = 0; i < 27; i++) {
 for (var i = 0; i < 27; i++) {
     teleGridData[i] = 0;
 }
+setUpTeleGrid();
 
 
 
@@ -96,10 +97,43 @@ var autoTech = false;
 const autoTechCheck = document.getElementById("auto-tech-check");
 
 
+
 var autoCharge = false;
 const autoChargeCheck = document.getElementById("auto-charge-check");
 const autoChargeOutcomeSelect = document.getElementById("auto-charge");
 autoChargeOutcomeSelect.style.display = "none";
+
+
+
+var teleTech = false;
+const teleTechCheck = document.getElementById("tele-tech-check");
+
+
+
+var teleFlip = false;
+const teleFlipCheck = document.getElementById("tele-flip-check");
+
+
+
+var teleComms = false;
+const teleCommsCheck = document.getElementById("tele-comms-check");
+
+
+
+var teleDisabled = false;
+const teleDisabledCheck = document.getElementById("tele-disabled-check");
+
+
+
+var teleCharge = false;
+const teleChargeCheck = document.getElementById("tele-charge-check");
+const teleChargeOutcomeSelect = document.getElementById("tele-charge");
+teleChargeOutcomeSelect.style.display = "none";
+
+
+
+var telePark = false;
+const teleParkCheck = document.getElementById("tele-park-check");
 
 
 
@@ -193,6 +227,7 @@ function setTeleNode(id) {
 }
 
 function setUpTeleGrid() {
+
     console.log(autoGridData);
     teleGridContainer.innerHTML = "";
     for (var s = 0; s < 3; s++) {
@@ -230,11 +265,11 @@ function setUpTeleGrid() {
 allianceSelect.addEventListener("change", function () {
     if (document.getElementById("alliance-select").value.substring(0, 1) == "R") {
         for (var i = 0; i < grids.length; i++) {
-            grids[0].style.transform = "rotate(180deg)";
+            grids[i].style.transform = "rotate(180deg)";
         }
     } else {
         for (var i = 0; i < grids.length; i++) {
-            grids[0].style.transform = "rotate(0deg)";
+            grids[i].style.transform = "rotate(0deg)";
         }
     }
 });
@@ -289,6 +324,111 @@ autoChargeCheck.addEventListener("click", async function () {
 
         await sleep(500);
         autoChargeOutcomeSelect.style.display = "none";
+    }
+});
+
+teleTechCheck.addEventListener("click", function () {
+    teleTech = !teleTech;
+    var checkbox = document.getElementById("tele-tech-checkbox");
+
+    if (teleTech) {
+        checkbox.style.backgroundColor = "#6feb36";
+        tl.to(checkbox, { scale: 1.25, duration: 0.15, ease: "power2" });
+        tl.to(checkbox, { scale: 1, duration: 0.15, ease: "power2" });
+    } else {
+        checkbox.style.backgroundColor = "rgb(93, 94, 95)";
+        tl.to(checkbox, { scale: 0.75, duration: 0.15, ease: "power2" });
+        tl.to(checkbox, { scale: 1, duration: 0.15, ease: "power2" });
+    }
+});
+
+teleFlipCheck.addEventListener("click", function () {
+    teleFlip = !teleFlip;
+    var checkbox = document.getElementById("tele-flip-checkbox");
+
+    if (teleFlip) {
+        checkbox.style.backgroundColor = "#6feb36";
+        tl.to(checkbox, { scale: 1.25, duration: 0.15, ease: "power2" });
+        tl.to(checkbox, { scale: 1, duration: 0.15, ease: "power2" });
+    } else {
+        checkbox.style.backgroundColor = "rgb(93, 94, 95)";
+        tl.to(checkbox, { scale: 0.75, duration: 0.15, ease: "power2" });
+        tl.to(checkbox, { scale: 1, duration: 0.15, ease: "power2" });
+    }
+});
+
+teleCommsCheck.addEventListener("click", function () {
+    teleComms = !teleComms;
+    var checkbox = document.getElementById("tele-comms-checkbox");
+
+    if (teleComms) {
+        checkbox.style.backgroundColor = "#6feb36";
+        tl.to(checkbox, { scale: 1.25, duration: 0.15, ease: "power2" });
+        tl.to(checkbox, { scale: 1, duration: 0.15, ease: "power2" });
+    } else {
+        checkbox.style.backgroundColor = "rgb(93, 94, 95)";
+        tl.to(checkbox, { scale: 0.75, duration: 0.15, ease: "power2" });
+        tl.to(checkbox, { scale: 1, duration: 0.15, ease: "power2" });
+    }
+});
+
+teleDisabledCheck.addEventListener("click", function () {
+    teleDisabled = !teleDisabled;
+    var checkbox = document.getElementById("tele-disabled-checkbox");
+
+    if (teleDisabled) {
+        checkbox.style.backgroundColor = "#6feb36";
+        tl.to(checkbox, { scale: 1.25, duration: 0.15, ease: "power2" });
+        tl.to(checkbox, { scale: 1, duration: 0.15, ease: "power2" });
+    } else {
+        checkbox.style.backgroundColor = "rgb(93, 94, 95)";
+        tl.to(checkbox, { scale: 0.75, duration: 0.15, ease: "power2" });
+        tl.to(checkbox, { scale: 1, duration: 0.15, ease: "power2" });
+    }
+});
+
+teleChargeCheck.addEventListener("click", async function () {
+    teleCharge = !teleCharge;
+    var checkbox = document.getElementById("tele-charge-checkbox");
+
+    if (teleCharge) {
+        checkbox.style.backgroundColor = "#6feb36";
+        tl.to(checkbox, { scale: 1.25, duration: 0.15, ease: "power2" });
+        tl.to(checkbox, { scale: 1, duration: 0.15, ease: "power2" });
+
+        teleChargeOutcomeSelect.style.display = "flex";
+        tl.fromTo(teleChargeOutcomeSelect, { scale: 0, opacity: 0}, { scale: 1, opacity: 1, duration: 0.5, ease: "power2" });
+        tl.fromTo(teleParkCheck, { scale: 1, opacity: 1}, { scale: 0, opacity: 0, duration: 0.5, ease: "power2" }, "-=0.5");
+        await sleep(500);
+        tl.fromTo(teleChargeOutcomeSelect, { marginTop: "20vw"}, { marginTop: "0vw", duration: 0.5, ease: "power2" }, "-=0.2");
+        teleParkCheck.style.display = "none";
+    } else {
+        checkbox.style.backgroundColor = "rgb(93, 94, 95)";
+        tl.to(checkbox, { scale: 0.75, duration: 0.15, ease: "power2" });
+        tl.to(checkbox, { scale: 1, duration: 0.15, ease: "power2" });
+
+        teleParkCheck.style.display = "flex";
+
+        tl.fromTo(teleChargeOutcomeSelect, { scale: 1, opacity: 1 }, { scale: 0, opacity: 0, duration: 0.5, ease: "power2" });
+        tl.fromTo(teleParkCheck, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power2" }, "-=0.5");
+
+        await sleep(500);
+        teleChargeOutcomeSelect.style.display = "none";
+    }
+});
+
+teleParkCheck.addEventListener("click", function () {
+    telePark = !telePark;
+    var checkbox = document.getElementById("tele-park-checkbox");
+
+    if (telePark) {
+        checkbox.style.backgroundColor = "#6feb36";
+        tl.to(checkbox, { scale: 1.25, duration: 0.15, ease: "power2" });
+        tl.to(checkbox, { scale: 1, duration: 0.15, ease: "power2" });
+    } else {
+        checkbox.style.backgroundColor = "rgb(93, 94, 95)";
+        tl.to(checkbox, { scale: 0.75, duration: 0.15, ease: "power2" });
+        tl.to(checkbox, { scale: 1, duration: 0.15, ease: "power2" });
     }
 });
 

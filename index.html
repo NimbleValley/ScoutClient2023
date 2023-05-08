@@ -41,6 +41,10 @@
             <input type="number" id="match-input" min="0" max="150">
         </div>
         <div class="container">
+            <h2>Team Number:</h2>
+            <input type="number" id="match-input" min="1" max="9999">
+        </div>
+        <div class="container">
             <h2>Name:</h2>
             <input type="text" id="name-input">
         </div>
@@ -110,9 +114,9 @@
             <div id="tele-flip-checkbox" class="check"></div>
         </div>
 
-        <div class="checkbox-label" id="tele-comm-check">
+        <div class="checkbox-label" id="tele-comms-check">
             <h2>Lost Comms</h2>
-            <div id="tele-comm-checkbox" class="check"></div>
+            <div id="tele-comms-checkbox" class="check"></div>
         </div>
 
         <div class="checkbox-label" id="tele-disabled-check">
@@ -122,20 +126,19 @@
 
         <h1 style="margin-bottom: 0vh;">Endgame</h1>
 
-        <div class="checkbox-label" id="mobility-check">
-            <h2>Mobility</h2>
-            <div id="auto-mobility-checkbox" class="check"></div>
+        <div class="checkbox-label" id="tele-charge-check">
+            <h2>Charged</h2>
+            <div id="tele-charge-checkbox" class="check"></div>
         </div>
 
-        <div class="checkbox-label" id="charge-check">
-            <h2>Tried Charge</h2>
-            <div id="auto-charge-checkbox" class="check"></div>
+        <div class="checkbox-label" id="tele-park-check">
+            <h2>Parked</h2>
+            <div id="tele-park-checkbox" class="check"></div>
         </div>
 
-        <div class="container" id="auto-charge" style="margin-top: 5vh">
+        <div class="container" id="tele-charge" style="margin-top: 5vh">
             <h2>Charge Outcome:</h2>
-            <select name="auto-charge" id="auto-charge">
-                <option value="No">Failed</option>
+            <select name="tele-charge" id="tele-charge">
                 <option value="Docked">Docked</option>
                 <option value="Engaged">Engaged</option>
             </select>

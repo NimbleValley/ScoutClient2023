@@ -90,7 +90,7 @@ textarea {
     padding: 2.5vw 7vw 2.5vw 7vw;
     border-radius: 1vw;
     border: 1vw solid white;
-    font-weight: bold;
+    font-weight: 400;
     margin-top: 10vh;
     margin-bottom: 5vh;
 }
@@ -101,7 +101,7 @@ textarea {
     padding: 2vw 6vw 2vw 6vw;
     border-radius: 1vw;
     border: 1vw solid white;
-    font-weight: bold;
+    font-weight: 400;
     margin-top: 10vh;
     margin-bottom: 5vh;
 }
@@ -143,6 +143,7 @@ textarea {
     background-color: rgb(196, 190, 184);
     border-radius: 1vw;
     transition: background-color 0.25s;
+    border: 1.5vw solid transparent;
 }
 
 .grid-node-tele {
@@ -154,6 +155,7 @@ textarea {
     background-color: rgb(196, 190, 184);
     border-radius: 1vw;
     transition: background-color 0.25s;
+    border: 1.5vw solid transparent;
 }
 
 .container {
