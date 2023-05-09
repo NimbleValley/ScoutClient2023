@@ -76,9 +76,8 @@ input {
 
 textarea {
     background-color: rgb(184, 178, 178);
-    font-size: 5vw;
+    font-size: 4vw;
     color: black;
-    padding: 2vw 5vw 2vw 5vw;
     border: 1vw solid rgb(235, 229, 229);
     border-radius: 1vw;
     font-family: 'Poppins', sans-serif;
@@ -104,6 +103,25 @@ textarea {
     font-weight: 400;
     margin-top: 10vh;
     margin-bottom: 5vh;
+}
+
+button {
+    background-color: rgb(207, 200, 190);
+    font-size: 8vw;
+    padding: 2vw 6vw 2vw 6vw;
+    border-radius: 1vw;
+    border: 1vw solid white;
+    font-weight: 400;
+    margin-top: 10vh;
+    margin-bottom: 5vh;
+    font-family: 'Poppins', sans-serif;
+}
+
+form {
+    padding: 0;
+    height: 100%;
+    font-size: 8vw;
+    margin: 0;
 }
 
 .button-container {
@@ -187,4 +205,9 @@ textarea {
     background-color: rgb(66, 66, 66);
     padding: 2.5vw;
     border-radius: 2vw;
+}
+
+#respect-your-elders-image {
+    width: 100vw;
+    object-fit: cover;
 }

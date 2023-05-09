@@ -80,7 +80,7 @@
             <div id="auto-charge-checkbox" class="check"></div>
         </div>
 
-        <div class="container" id="auto-charge" style="margin-top: 5vh">
+        <div class="container" id="auto-charge-container" style="margin-top: 5vh">
             <h2>Charge Outcome:</h2>
             <select name="auto-charge" id="auto-charge">
                 <option value="No">Failed</option>
@@ -158,13 +158,15 @@
 
         <div class="button-container">
             <div class="section-button" onclick="switchSection(4, 3)">Back</div>
-            <div class="section-button" id="submit-button" onclick="switchSection(4, 5)">Submit</div>
+            <form id="scout-form">
+                <button class="section-button" id="submit-button" type="submit" onclick="switchSection(4, 5)">Submit</button>
+            </form>
         </div>
     </div>
     <div id="tylenol-section" class="section">
         <h1 style="text-align: center;">Submitting Response...</h1>
         <h3>While you wait, enjoy this image.</h3>
-        <img src="Sherril5.png" alt="Won't load :(">
+        <img id="respect-your-elders-image" src="img/sherril5.png" alt="Won't load :(">
     </div>
 </body>
 <script src="index.js"></script>
