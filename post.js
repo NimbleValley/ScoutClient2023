@@ -59,13 +59,114 @@ scoutForm.addEventListener('submit', e => {
         autoTechOutput = "Yes";
     }
 
+    var teleHigh = 0;
+    var teleMid = 0;
+    var teleLow = 0;
+
+    for(var i = 0; i < teleGridData.length; i++){
+        if(i % 9>= 6 && teleGridData[i] != 0) {
+            teleHigh ++;
+        }
+    }
+
+    for(var i = 0; i < teleGridData.length; i++){
+        if(i % 9 < 6 && i % 9 > 2 && teleGridData[i] != 0) {
+            teleMid ++;
+        }
+    }
+
+    for(var i = 0; i < teleGridData.length; i++){
+        if(i % 9 <= 2 && teleGridData[i] != 0) {
+            teleLow ++;
+        }
+    }
+
+    var teleParkOutput = "No";
+    if(telePark) {
+        teleParkOutput = "Yes";
+    }
+
+    var teleChargeAttemptOutput = "No";
+    var teleChargeDock = "No";
+    var teleChargeEngage = "No";
+    if(teleCharge) {
+        if(teleChargeOutcomeSelect.value == "Engaged") {
+            teleChargeEngage = "Yes";
+        } else if(teleChargeOutcomeSelect.value == "Docked") {
+            teleChargeDock = "Yes";
+        }
+        teleChargeAttemptOutput = "Yes";
+    }
+
+    var teleTechOutput = "No";
+    if(teleTech) {
+        teleTechOutput = "Yes";
+    }
+
+    var teleCommsOutput = "No";
+    if(teleComms) {
+        teleCommsOutput = "Yes";
+    }
+
+    var teleDisabledOutput = "No";
+    if(teleDisabled) {
+        teleDisabledOutput = "Yes";
+    }
+    
+    var autoPoints = 0;
+    autoPoints = (autoHigh * 6) + (autoMid * 4) + (autoLow * 3);
+    if(autoMobility) {
+        autoPoints += 3;
+    }
+    if(autoChargeEngage == "Yes") {
+        autoPoints += 12;
+    } else if(autoChargeDock == "Yes") {
+        autoPoints += 8;
+    }
+    if(autoTech) {
+        autoPoints -= 10;
+    }
+    console.log(autoPoints);
+
+
+    // TELE VALUES
+
+    var teleTechOutput = "No";
+    if(teleTech) {
+        teleTechOutput = "Yes";
+    }
+
+    var teleFlipOutput = "No";
+    if(teleFlip) {
+        teleFlipOutput = "Yes";
+    }
+
+    var telePoints = 0;
+    telePoints = (teleHigh * 5) + (teleMid * 3) + (teleLow * 2);
+
+    if(teleChargeEngage == "Yes") {
+        telePoints += 10;
+    } else if(teleChargeDock == "Yes") {
+        telePoints += 6;
+    } else if(telePark) {
+        telePoints += 2;
+    }
+    if(teleTech) {
+        telePoints -= 10;
+    }
+    console.log(telePoints);
+
+    var commentsOutput = document.getElementById("comments-area").value;
+
     data = {
         "Name": nameInput.value,
         "Team Number": teamInput.value,
         "Alliance": allianceSelect.value,
         "Match Number": matchInput.value,
         "Auto Placement": autoGridData,
+        "Auto Points": autoPoints,
         "Tele Placement": teleGridData,
+        "Tele Points": telePoints,
         "Auto High": autoHigh,
         "Auto Mid": autoMid,
         "Auto Low": autoLow,
@@ -74,6 +175,17 @@ scoutForm.addEventListener('submit', e => {
         "Auto Dock": autoChargeDock,
         "Auto Engage": autoChargeEngage,
         "Auto Tech": autoTechOutput,
+        "Tele High": teleHigh,
+        "Tele Mid": teleMid,
+        "Tele Low": teleLow,
+        "Endgame Park": teleParkOutput,
+        "Tele Dock": teleChargeDock,
+        "Tele Engage": teleChargeEngage,
+        "Tele Tech": teleTechOutput,
+        "Flip": teleFlipOutput,
+        "Lost Comms": teleCommsOutput,
+        "Disabled": teleDisabledOutput,
+        "Comments": commentsOutput
     };
 
     var formData = new FormData();
