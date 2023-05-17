@@ -1,2 +1,2 @@
-# ScoutClient2023
-Client side for Scouting2023
+# Scouting2023
+Simple frc scouting helper, better data collection, visualization, & more. Created for FRC Charged Up.
