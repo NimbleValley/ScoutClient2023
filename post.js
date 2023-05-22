@@ -141,6 +141,16 @@ scoutForm.addEventListener('submit', e => {
         teleFlipOutput = "Yes";
     }
 
+    var dumbOutput = "No";
+    if(dumb) {
+        dumbOutput = "Yes";
+    }
+
+    var recklessOutput = "No";
+    if(reckless) {
+        recklessOutput = "Yes";
+    }
+
     var telePoints = 0;
     telePoints = (teleHigh * 5) + (teleMid * 3) + (teleLow * 2);
 
@@ -185,6 +195,8 @@ scoutForm.addEventListener('submit', e => {
         "Flip": teleFlipOutput,
         "Lost Comms": teleCommsOutput,
         "Disabled": teleDisabledOutput,
+        "Poor Decisions/Unintelligent": dumbOutput,
+        "Reckless": recklessOutput,
         "Comments": commentsOutput
     };
 
@@ -199,9 +211,31 @@ scoutForm.addEventListener('submit', e => {
         .then(response => {
             alert('Success!', response);
             switchSection(5, 0);
+            resetForm();
         })
         .catch(error => {
             alert('Terrible Error :(.', error.message);
             switchSection(5, 0);
+            resetForm();
         });
 });
+
+function resetForm() {
+    teamInput.value = "";
+    matchInput.value = "";
+    teleCharge = false;
+    teleFlip = false;
+    dumb = false;
+    reckless = false;
+    teleTech = false;
+    autoCharge = false;
+    autoTech = false;
+    teleComms = false;
+    teleDisabled = false;
+    telePark = false;
+    autoMobility = false;
+    var checks = document.getElementsByClassName("check");
+    for(var i = 0; i < checks.length; i ++) {
+        checks[i].style.backgroundColor = "rgb(93, 94, 95)";
+    }
+}

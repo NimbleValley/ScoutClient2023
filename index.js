@@ -18,7 +18,7 @@ const sections = document.getElementsByClassName("section");
 for (var i = 0; i < sections.length; i++) {
     sections[i].style.display = "none";
 }
-sections[0].style.display = "flex";
+sections[4].style.display = "flex";
 
 
 
@@ -134,6 +134,16 @@ teleChargeOutcomeSelect.style.display = "none";
 
 var telePark = false;
 const teleParkCheck = document.getElementById("tele-park-check");
+
+
+
+var dumb = false;
+const dumbCheck = document.getElementById("dumb-check");
+
+
+
+var reckless = false;
+const recklessCheck = document.getElementById("reckless-check");
 
 
 
@@ -422,6 +432,36 @@ teleParkCheck.addEventListener("click", function () {
     var checkbox = document.getElementById("tele-park-checkbox");
 
     if (telePark) {
+        checkbox.style.backgroundColor = "#6feb36";
+        tl.to(checkbox, { scale: 1.25, duration: 0.15, ease: "power2" });
+        tl.to(checkbox, { scale: 1, duration: 0.15, ease: "power2" });
+    } else {
+        checkbox.style.backgroundColor = "rgb(93, 94, 95)";
+        tl.to(checkbox, { scale: 0.75, duration: 0.15, ease: "power2" });
+        tl.to(checkbox, { scale: 1, duration: 0.15, ease: "power2" });
+    }
+});
+
+dumbCheck.addEventListener("click", function () {
+    dumb = !dumb;
+    var checkbox = document.getElementById("dumb-checkbox");
+
+    if (dumb) {
+        checkbox.style.backgroundColor = "#6feb36";
+        tl.to(checkbox, { scale: 1.25, duration: 0.15, ease: "power2" });
+        tl.to(checkbox, { scale: 1, duration: 0.15, ease: "power2" });
+    } else {
+        checkbox.style.backgroundColor = "rgb(93, 94, 95)";
+        tl.to(checkbox, { scale: 0.75, duration: 0.15, ease: "power2" });
+        tl.to(checkbox, { scale: 1, duration: 0.15, ease: "power2" });
+    }
+});
+
+recklessCheck.addEventListener("click", function () {
+    reckless = !reckless;
+    var checkbox = document.getElementById("reckless-checkbox");
+
+    if (reckless) {
         checkbox.style.backgroundColor = "#6feb36";
         tl.to(checkbox, { scale: 1.25, duration: 0.15, ease: "power2" });
         tl.to(checkbox, { scale: 1, duration: 0.15, ease: "power2" });

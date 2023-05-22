@@ -81,6 +81,7 @@ textarea {
     border: 1vw solid rgb(235, 229, 229);
     border-radius: 1vw;
     font-family: 'Poppins', sans-serif;
+    max-width: 90vw;
 }
 
 #start-button {
