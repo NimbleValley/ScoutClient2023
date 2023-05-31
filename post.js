@@ -5,6 +5,8 @@ const matchInput = document.getElementById("match-input");
 const submitButton = document.getElementById("submit-button");
 const scoutForm = document.getElementById("scout-form");
 
+const autoChargeOutput = document.getElementById("auto-charge");
+
 const scriptURL = "https://script.google.com/macros/s/AKfycbzk1w9sYekFbdUre5kaGVnjtnqSVr9PpHrCgfFvb261u_gFfUMPgPSh1UDR3WAFzFxbpw/exec";
 
 const respectInducingImages = ["img/sherril5.png", "img/trompmil24.png", "img/sherril.png", "img/snow.png"];
@@ -46,9 +48,9 @@ scoutForm.addEventListener('submit', e => {
     var autoChargeDock = "No";
     var autoChargeEngage = "No";
     if(autoCharge) {
-        if(autoChargeOutcomeSelect.value == "Engaged") {
+        if(autoChargeOutput.value == "Engaged") {
             autoChargeEngage = "Yes";
-        } else if(autoChargeOutcomeSelect.value == "Docked") {
+        } else if(autoChargeOutput.value == "Docked") {
             autoChargeDock = "Yes";
         }
         autoChargeAttemptOutput = "Yes";

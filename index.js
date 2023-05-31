@@ -18,7 +18,7 @@ const sections = document.getElementsByClassName("section");
 for (var i = 0; i < sections.length; i++) {
     sections[i].style.display = "none";
 }
-sections[4].style.display = "flex";
+sections[2].style.display = "flex";
 
 
 
@@ -100,7 +100,7 @@ const autoTechCheck = document.getElementById("auto-tech-check");
 
 var autoCharge = false;
 const autoChargeCheck = document.getElementById("auto-charge-check");
-const autoChargeOutcomeSelect = document.getElementById("auto-charge");
+const autoChargeOutcomeSelect = document.getElementById("auto-charge-container");
 autoChargeOutcomeSelect.style.display = "none";
 
 
