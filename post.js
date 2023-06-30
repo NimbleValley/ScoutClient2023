@@ -61,6 +61,11 @@ scoutForm.addEventListener('submit', e => {
         autoTechOutput = "Yes";
     }
 
+    var autoSuccessOutput = "No";
+    if(autoSuccess) {
+        autoSuccessOutput = "Yes";
+    }
+
     var teleHigh = 0;
     var teleMid = 0;
     var teleLow = 0;
@@ -187,6 +192,7 @@ scoutForm.addEventListener('submit', e => {
         "Auto Dock": autoChargeDock,
         "Auto Engage": autoChargeEngage,
         "Auto Tech": autoTechOutput,
+        "Auto Successful": autoSuccessOutput,
         "Tele High": teleHigh,
         "Tele Mid": teleMid,
         "Tele Low": teleLow,
@@ -236,8 +242,17 @@ function resetForm() {
     teleDisabled = false;
     telePark = false;
     autoMobility = false;
+    autoSuccess = false;
     var checks = document.getElementsByClassName("check");
     for(var i = 0; i < checks.length; i ++) {
         checks[i].style.backgroundColor = "rgb(93, 94, 95)";
+    }
+    let nodesA = document.getElementsByClassName("grid-node-auto");
+    let nodesT = document.getElementsByClassName("grid-node-tele");
+    for (var i = 0; i < 27; i++) {
+        autoGridData[i] = 0;
+        teleGridData[i] = 0;
+        nodesA[i].style.backgroundColor = "rgb(196, 190, 184)";
+        nodesT[i].style.backgroundColor = "rgb(196, 190, 184)";
     }
 }

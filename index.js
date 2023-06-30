@@ -97,9 +97,13 @@ var autoTech = false;
 const autoTechCheck = document.getElementById("auto-tech-check");
 
 
+var autoSuccess = false;
+const autoSuccessCheck = document.getElementById("auto-success-check");
+
 
 var autoCharge = false;
 const autoChargeCheck = document.getElementById("auto-charge-check");
+
 const autoChargeOutcomeSelect = document.getElementById("auto-charge-container");
 autoChargeOutcomeSelect.style.display = "none";
 
@@ -334,6 +338,21 @@ autoChargeCheck.addEventListener("click", async function () {
 
         await sleep(500);
         autoChargeOutcomeSelect.style.display = "none";
+    }
+});
+
+autoSuccessCheck.addEventListener("click", function () {
+    autoSuccess = !autoSuccess;
+    var checkbox = document.getElementById("auto-success-checkbox");
+
+    if (autoSuccess) {
+        checkbox.style.backgroundColor = "#6feb36";
+        tl.to(checkbox, { scale: 1.25, duration: 0.15, ease: "power2" });
+        tl.to(checkbox, { scale: 1, duration: 0.15, ease: "power2" });
+    } else {
+        checkbox.style.backgroundColor = "rgb(93, 94, 95)";
+        tl.to(checkbox, { scale: 0.75, duration: 0.15, ease: "power2" });
+        tl.to(checkbox, { scale: 1, duration: 0.15, ease: "power2" });
     }
 });
 
