@@ -32,6 +32,8 @@ for (var s = 0; s < 3; s++) {
     tempSection.className = "grid-section";
     if (s == 1) {
         tempSection.style.backgroundColor = "rgb(78, 74, 74)";
+        let tempP = document.createElement("p");
+        tempP.innerText = "High";
     }
     for (var r = 0; r < 3; r++) {
         var tempRow = document.createElement("div");
