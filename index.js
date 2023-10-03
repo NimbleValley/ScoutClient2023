@@ -10,20 +10,31 @@ function enterFullScreen(element) {
     }
 };
 
+var sections = document.getElementsByClassName("section");
+
+window.addEventListener("resize", () => {
+    windowResized();
+});
+
+function windowResized() {
+    if(window.innerWidth > window.innerHeight) {
+        for (var i=0; i < sections.length; i++) {
+            //sections[i].style.scale = "0.5";
+       }
+    }
+}
+
 enterFullScreen(window);
 
 var tl = new TimelineMax();
 
-const sections = document.getElementsByClassName("section");
 for (var i = 0; i < sections.length; i++) {
     sections[i].style.display = "none";
 }
 sections[0].style.display = "flex";
 
 
-
 const allianceSelect = document.getElementById("alliance-select");
-
 
 
 const gridContainer = document.getElementById("grid-container");
@@ -51,6 +62,8 @@ for (var s = 0; s < 3; s++) {
 var grids = document.getElementsByClassName("grid-container-full");
 var autoGridData = [];
 
+
+const teleChargeContainer = document.getElementById("tele-charge-container");
 
 
 const teleGridContainer = document.getElementById("tele-grid-container");
@@ -132,7 +145,7 @@ const teleDisabledCheck = document.getElementById("tele-disabled-check");
 var teleCharge = false;
 const teleChargeCheck = document.getElementById("tele-charge-check");
 const teleChargeOutcomeSelect = document.getElementById("tele-charge");
-teleChargeOutcomeSelect.style.display = "none";
+teleChargeContainer.style.display = "none";
 
 
 
@@ -172,6 +185,8 @@ async function switchSection(current, next) {
     }
     await sleep(500);
     sections[current].style.display = "none";
+
+    windowResized();
 }
 
 function setAutoNode(id) {
@@ -425,11 +440,11 @@ teleChargeCheck.addEventListener("click", async function () {
         tl.to(checkbox, { scale: 1.25, duration: 0.15, ease: "power2" });
         tl.to(checkbox, { scale: 1, duration: 0.15, ease: "power2" });
 
-        teleChargeOutcomeSelect.style.display = "flex";
-        tl.fromTo(teleChargeOutcomeSelect, { scale: 0, opacity: 0}, { scale: 1, opacity: 1, duration: 0.5, ease: "power2" });
+        teleChargeContainer.style.display = "flex";
+        tl.fromTo(teleChargeContainer, { scale: 0, opacity: 0}, { scale: 1, opacity: 1, duration: 0.5, ease: "power2" });
         tl.fromTo(teleParkCheck, { scale: 1, opacity: 1}, { scale: 0, opacity: 0, duration: 0.5, ease: "power2" }, "-=0.5");
-        await sleep(500);
-        tl.fromTo(teleChargeOutcomeSelect, { marginTop: "20vw"}, { marginTop: "0vw", duration: 0.5, ease: "power2" }, "-=0.2");
+        await sleep(100);
+        tl.fromTo(teleChargeContainer, { marginTop: "20vw"}, { marginTop: "0vw", duration: 0.5, ease: "power2" }, "-=0.2");
         teleParkCheck.style.display = "none";
     } else {
         checkbox.style.backgroundColor = "rgb(93, 94, 95)";
@@ -438,11 +453,11 @@ teleChargeCheck.addEventListener("click", async function () {
 
         teleParkCheck.style.display = "flex";
 
-        tl.fromTo(teleChargeOutcomeSelect, { scale: 1, opacity: 1 }, { scale: 0, opacity: 0, duration: 0.5, ease: "power2" });
+        tl.fromTo(teleChargeContainer, { scale: 1, opacity: 1 }, { scale: 0, opacity: 0, duration: 0.5, ease: "power2" });
         tl.fromTo(teleParkCheck, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power2" }, "-=0.5");
 
         await sleep(500);
-        teleChargeOutcomeSelect.style.display = "none";
+        teleChargeContainer.style.display = "none";
     }
 });
 
@@ -494,3 +509,5 @@ recklessCheck.addEventListener("click", function () {
 const sleep = (milliseconds) => {
     return new Promise(resolve => setTimeout(resolve, milliseconds))
 }
+
+windowResized();

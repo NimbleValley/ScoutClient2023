@@ -9,7 +9,11 @@ const autoChargeOutput = document.getElementById("auto-charge");
 
 const scriptURL = "https://script.google.com/macros/s/AKfycbzk1w9sYekFbdUre5kaGVnjtnqSVr9PpHrCgfFvb261u_gFfUMPgPSh1UDR3WAFzFxbpw/exec";
 
-const respectInducingImages = ["img/sherril5.png", "img/trompmil24.png", "img/sherril.png", "img/snow.png"];
+const respectInducingImages = ["img/sherril5.jpg", "img/trompmil24.jpg", "img/sherril.jpg", "img/snow.jpg", "img/sherrilwatching.jpg", "img/joseph1.jpg"];
+
+document.addEventListener("keypress", function() {
+    //document.getElementById("respect-your-elders-image").src = respectInducingImages[Math.round(Math.random() * (respectInducingImages.length-1))];
+})
 
 scoutForm.addEventListener('submit', e => {
     document.getElementById("respect-your-elders-image").src = respectInducingImages[Math.round(Math.random() * (respectInducingImages.length-1))];
@@ -255,4 +259,9 @@ function resetForm() {
         nodesA[i].style.backgroundColor = "rgb(196, 190, 184)";
         nodesT[i].style.backgroundColor = "rgb(196, 190, 184)";
     }
+    teleChargeContainer.style.display = "none";
+    teleParkCheck.style.display = "flex";
+    teleParkCheck.style.scale = 1;
+    teleParkCheck.style.transform = "";
+    teleParkCheck.style.opacity = 1;
 }
