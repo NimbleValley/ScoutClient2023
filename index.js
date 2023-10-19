@@ -17,10 +17,10 @@ window.addEventListener("resize", () => {
 });
 
 function windowResized() {
-    if(window.innerWidth > window.innerHeight) {
-        for (var i=0; i < sections.length; i++) {
+    if (window.innerWidth > window.innerHeight) {
+        for (var i = 0; i < sections.length; i++) {
             //sections[i].style.scale = "0.5";
-       }
+        }
     }
 }
 
@@ -100,6 +100,13 @@ for (var i = 0; i < 27; i++) {
 setUpTeleGrid();
 
 
+var autoDroppedPieced = 0;
+const autoDroppedPiecesText = document.getElementById("auto-dropped=pieces-text");
+
+
+var teleDroppedPieced = 0;
+const teleDroppedPiecesText = document.getElementById("tele-dropped=pieces-text");
+
 
 var autoMobility = false;
 const autoMobilityCheck = document.getElementById("auto-mobility-check");
@@ -109,9 +116,6 @@ const autoMobilityCheck = document.getElementById("auto-mobility-check");
 var autoTech = false;
 const autoTechCheck = document.getElementById("auto-tech-check");
 
-
-var autoSuccess = false;
-const autoSuccessCheck = document.getElementById("auto-success-check");
 
 
 var autoCharge = false;
@@ -164,7 +168,22 @@ const recklessCheck = document.getElementById("reckless-check");
 
 
 
+var autoSuccess = true;
+
+
+
+var onSection = 0;
+
+
+
+
 async function switchSection(current, next) {
+    if(next > current) {
+        onSection ++;
+    } else {
+        onSection --;
+    }
+
     window.scroll({
         top: 0,
         left: 0
@@ -275,7 +294,7 @@ function setUpTeleGrid() {
                 tempNode.id = (s * 9) + (r * 3) + (n);
                 if (autoGridData[(s * 9) + (r * 3) + (n)] != 0) {
                     tempNode.style.border = "orangered solid 1.5vw";
-                    if(autoGridData[(s * 9) + (r * 3) + (n)] == 1) {
+                    if (autoGridData[(s * 9) + (r * 3) + (n)] == 1) {
                         tempNode.style.backgroundColor = "#6643DA";
                     } else {
                         tempNode.style.backgroundColor = "#FDC955";
@@ -356,21 +375,6 @@ autoChargeCheck.addEventListener("click", async function () {
     }
 });
 
-autoSuccessCheck.addEventListener("click", function () {
-    autoSuccess = !autoSuccess;
-    var checkbox = document.getElementById("auto-success-checkbox");
-
-    if (autoSuccess) {
-        checkbox.style.backgroundColor = "#6feb36";
-        tl.to(checkbox, { scale: 1.25, duration: 0.15, ease: "power2" });
-        tl.to(checkbox, { scale: 1, duration: 0.15, ease: "power2" });
-    } else {
-        checkbox.style.backgroundColor = "rgb(93, 94, 95)";
-        tl.to(checkbox, { scale: 0.75, duration: 0.15, ease: "power2" });
-        tl.to(checkbox, { scale: 1, duration: 0.15, ease: "power2" });
-    }
-});
-
 teleTechCheck.addEventListener("click", function () {
     teleTech = !teleTech;
     var checkbox = document.getElementById("tele-tech-checkbox");
@@ -441,10 +445,10 @@ teleChargeCheck.addEventListener("click", async function () {
         tl.to(checkbox, { scale: 1, duration: 0.15, ease: "power2" });
 
         teleChargeContainer.style.display = "flex";
-        tl.fromTo(teleChargeContainer, { scale: 0, opacity: 0}, { scale: 1, opacity: 1, duration: 0.5, ease: "power2" });
-        tl.fromTo(teleParkCheck, { scale: 1, opacity: 1}, { scale: 0, opacity: 0, duration: 0.5, ease: "power2" }, "-=0.5");
+        tl.fromTo(teleChargeContainer, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "power2" });
+        tl.fromTo(teleParkCheck, { scale: 1, opacity: 1 }, { scale: 0, opacity: 0, duration: 0.5, ease: "power2" }, "-=0.5");
         await sleep(100);
-        tl.fromTo(teleChargeContainer, { marginTop: "20vw"}, { marginTop: "0vw", duration: 0.5, ease: "power2" }, "-=0.2");
+        tl.fromTo(teleChargeContainer, { marginTop: "20vw" }, { marginTop: "0vw", duration: 0.5, ease: "power2" }, "-=0.2");
         teleParkCheck.style.display = "none";
     } else {
         checkbox.style.backgroundColor = "rgb(93, 94, 95)";
@@ -506,8 +510,39 @@ recklessCheck.addEventListener("click", function () {
     }
 });
 
+// DROPPED PIECES
+function autoDroppedPieceUpdate(num) {
+    if(autoDroppedPieced + num < 0) {
+        return;
+    }
+    autoDroppedPieced += num;
+    autoDroppedPiecesText.innerText = `Missed Pieces: ${autoDroppedPieced}`
+}
+
+function teleDroppedPieceUpdate(num) {
+    if(teleDroppedPieced + num < 0) {
+        return;
+    }
+    teleDroppedPieced += num;
+    teleDroppedPiecesText.innerText = `Missed Pieces: ${teleDroppedPieced}`
+}
+
 const sleep = (milliseconds) => {
     return new Promise(resolve => setTimeout(resolve, milliseconds))
 }
 
 windowResized();
+
+async function keepScreenOn() {
+    // Create a reference for the Wake Lock.
+    let wakeLock = null;
+
+    // create an async function to request a wake lock
+    try {
+        wakeLock = await navigator.wakeLock.request("screen");
+    } catch (err) {
+        // The Wake Lock request has failed - usually system related, such as battery.
+    }
+}
+
+keepScreenOn();

@@ -11,12 +11,12 @@ const scriptURL = "https://script.google.com/macros/s/AKfycbzk1w9sYekFbdUre5kaGV
 
 const respectInducingImages = ["img/sherril5.jpg", "img/trompmil24.jpg", "img/sherril.jpg", "img/snow.jpg", "img/sherrilwatching.jpg", "img/joseph1.jpg"];
 
-document.addEventListener("keypress", function() {
+document.addEventListener("keypress", function () {
     //document.getElementById("respect-your-elders-image").src = respectInducingImages[Math.round(Math.random() * (respectInducingImages.length-1))];
-})
+});
 
 scoutForm.addEventListener('submit', e => {
-    document.getElementById("respect-your-elders-image").src = respectInducingImages[Math.round(Math.random() * (respectInducingImages.length-1))];
+    document.getElementById("respect-your-elders-image").src = respectInducingImages[Math.round(Math.random() * (respectInducingImages.length - 1))];
 
     console.log('y');
 
@@ -24,49 +24,49 @@ scoutForm.addEventListener('submit', e => {
     var autoMid = 0;
     var autoLow = 0;
 
-    for(var i = 0; i < autoGridData.length; i++){
-        if(i % 9>= 6 && autoGridData[i] != 0) {
-            autoHigh ++;
+    for (var i = 0; i < autoGridData.length; i++) {
+        if (i % 9 >= 6 && autoGridData[i] != 0) {
+            autoHigh++;
         }
     }
 
-    for(var i = 0; i < autoGridData.length; i++){
-        if(i % 9 < 6 && i % 9 > 2 && autoGridData[i] != 0) {
-            autoMid ++;
+    for (var i = 0; i < autoGridData.length; i++) {
+        if (i % 9 < 6 && i % 9 > 2 && autoGridData[i] != 0) {
+            autoMid++;
         }
     }
 
-    for(var i = 0; i < autoGridData.length; i++){
-        if(i % 9 <= 2 && autoGridData[i] != 0) {
-            autoLow ++;
+    for (var i = 0; i < autoGridData.length; i++) {
+        if (i % 9 <= 2 && autoGridData[i] != 0) {
+            autoLow++;
         }
     }
     console.log(autoLow);
 
     var autoMobilityOutput = "No";
-    if(autoMobility) {
+    if (autoMobility) {
         autoMobilityOutput = "Yes";
     }
 
     var autoChargeAttemptOutput = "No";
     var autoChargeDock = "No";
     var autoChargeEngage = "No";
-    if(autoCharge) {
-        if(autoChargeOutput.value == "Engaged") {
+    if (autoCharge) {
+        if (autoChargeOutput.value == "Engaged") {
             autoChargeEngage = "Yes";
-        } else if(autoChargeOutput.value == "Docked") {
+        } else if (autoChargeOutput.value == "Docked") {
             autoChargeDock = "Yes";
         }
         autoChargeAttemptOutput = "Yes";
     }
 
     var autoTechOutput = "No";
-    if(autoTech) {
+    if (autoTech) {
         autoTechOutput = "Yes";
     }
 
     var autoSuccessOutput = "No";
-    if(autoSuccess) {
+    if (autoSuccess) {
         autoSuccessOutput = "Yes";
     }
 
@@ -74,105 +74,113 @@ scoutForm.addEventListener('submit', e => {
     var teleMid = 0;
     var teleLow = 0;
 
-    for(var i = 0; i < teleGridData.length; i++){
-        if(i % 9>= 6 && teleGridData[i] != 0) {
-            teleHigh ++;
+    for (var i = 0; i < teleGridData.length; i++) {
+        if (i % 9 >= 6 && teleGridData[i] != 0) {
+            teleHigh++;
         }
     }
 
-    for(var i = 0; i < teleGridData.length; i++){
-        if(i % 9 < 6 && i % 9 > 2 && teleGridData[i] != 0) {
-            teleMid ++;
+    for (var i = 0; i < teleGridData.length; i++) {
+        if (i % 9 < 6 && i % 9 > 2 && teleGridData[i] != 0) {
+            teleMid++;
         }
     }
 
-    for(var i = 0; i < teleGridData.length; i++){
-        if(i % 9 <= 2 && teleGridData[i] != 0) {
-            teleLow ++;
+    for (var i = 0; i < teleGridData.length; i++) {
+        if (i % 9 <= 2 && teleGridData[i] != 0) {
+            teleLow++;
         }
     }
 
-    var teleParkOutput = "No";
-    if(telePark) {
-        teleParkOutput = "Yes";
-    }
 
     var teleChargeAttemptOutput = "No";
     var teleChargeDock = "No";
     var teleChargeEngage = "No";
-    if(teleCharge) {
-        if(teleChargeOutcomeSelect.value == "Engaged") {
+    var teleParkOutput = "No";
+    if (teleCharge) {
+        if (teleChargeOutcomeSelect.value == "Engaged") {
             teleChargeEngage = "Yes";
-        } else if(teleChargeOutcomeSelect.value == "Docked") {
+        } else if (teleChargeOutcomeSelect.value == "Docked") {
             teleChargeDock = "Yes";
         }
         teleChargeAttemptOutput = "Yes";
+    } else {
+        if (telePark) {
+            teleParkOutput = "Yes";
+        }
     }
 
     var teleTechOutput = "No";
-    if(teleTech) {
+    if (teleTech) {
         teleTechOutput = "Yes";
     }
 
     var teleCommsOutput = "No";
-    if(teleComms) {
+    if (teleComms) {
         teleCommsOutput = "Yes";
     }
 
     var teleDisabledOutput = "No";
-    if(teleDisabled) {
+    if (teleDisabled) {
         teleDisabledOutput = "Yes";
     }
-    
+
+    // AUTO IS UNSUCCESSFUL IF THEY RECIEVED TECH, MISSED PIECE, OR TRIED BUT FAILED TO ENGAGE
+
     var autoPoints = 0;
     autoPoints = (autoHigh * 6) + (autoMid * 4) + (autoLow * 3);
-    if(autoMobility) {
+    if (autoMobility) {
         autoPoints += 3;
     }
-    if(autoChargeEngage == "Yes") {
+    if (autoChargeEngage == "Yes") {
         autoPoints += 12;
-    } else if(autoChargeDock == "Yes") {
+    } else if (autoChargeDock == "Yes") {
         autoPoints += 8;
+        autoSuccess = false;
     }
-    if(autoTech) {
+    if (autoTech) {
         autoPoints -= 10;
+        autoSuccess = false;
     }
     console.log(autoPoints);
 
+    if (autoDroppedPieced > 0) {
+        autoSuccess = false;
+    }
 
     // TELE VALUES
 
     var teleTechOutput = "No";
-    if(teleTech) {
+    if (teleTech) {
         teleTechOutput = "Yes";
     }
 
     var teleFlipOutput = "No";
-    if(teleFlip) {
+    if (teleFlip) {
         teleFlipOutput = "Yes";
     }
 
     var dumbOutput = "No";
-    if(dumb) {
+    if (dumb) {
         dumbOutput = "Yes";
     }
 
     var recklessOutput = "No";
-    if(reckless) {
+    if (reckless) {
         recklessOutput = "Yes";
     }
 
     var telePoints = 0;
     telePoints = (teleHigh * 5) + (teleMid * 3) + (teleLow * 2);
 
-    if(teleChargeEngage == "Yes") {
+    if (teleChargeEngage == "Yes") {
         telePoints += 10;
-    } else if(teleChargeDock == "Yes") {
+    } else if (teleChargeDock == "Yes") {
         telePoints += 6;
-    } else if(telePark) {
+    } else if (telePark) {
         telePoints += 2;
     }
-    if(teleTech) {
+    if (teleTech) {
         telePoints -= 10;
     }
     console.log(telePoints);
@@ -197,6 +205,7 @@ scoutForm.addEventListener('submit', e => {
         "Auto Engage": autoChargeEngage,
         "Auto Tech": autoTechOutput,
         "Auto Successful": autoSuccessOutput,
+        "Auto Dropped": autoDroppedPieced,
         "Tele High": teleHigh,
         "Tele Mid": teleMid,
         "Tele Low": teleLow,
@@ -204,6 +213,7 @@ scoutForm.addEventListener('submit', e => {
         "Tele Dock": teleChargeDock,
         "Tele Engage": teleChargeEngage,
         "Tele Tech": teleTechOutput,
+        "Tele Dropped": teleDroppedPieced,
         "Flip": teleFlipOutput,
         "Lost Comms": teleCommsOutput,
         "Disabled": teleDisabledOutput,
@@ -247,8 +257,15 @@ function resetForm() {
     telePark = false;
     autoMobility = false;
     autoSuccess = false;
+
+    autoDroppedPieced = 0;
+    teleDroppedPieced = 0;
+
+    teleDroppedPiecesText.innerText = "Missed Pieces: 0";
+    autoDroppedPiecesText.innerText = "Missed Pieces: 0";
+
     var checks = document.getElementsByClassName("check");
-    for(var i = 0; i < checks.length; i ++) {
+    for (var i = 0; i < checks.length; i++) {
         checks[i].style.backgroundColor = "rgb(93, 94, 95)";
     }
     let nodesA = document.getElementsByClassName("grid-node-auto");
@@ -264,4 +281,5 @@ function resetForm() {
     teleParkCheck.style.scale = 1;
     teleParkCheck.style.transform = "";
     teleParkCheck.style.opacity = 1;
+    document.getElementById("comments-area").value = "";
 }

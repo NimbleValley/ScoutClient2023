@@ -65,6 +65,14 @@
             <p>High</p>
         </div>
 
+        <div class="checkbox-label" id="piece-miss-button-container">
+            <h2 id="auto-dropped=pieces-text">Missed Pieces: 0</h2>
+            <div class="horizontal-container">
+                <button class="piece-miss-button" id="auto-dropped-pieces-plus-button" onclick="autoDroppedPieceUpdate(1)">+</button>
+                <button class="piece-miss-button" id="auto-dropped-pieces-minus-button" onclick="autoDroppedPieceUpdate(-1)">-</button>
+            </div>
+        </div>
+
         <div class="checkbox-label" id="auto-tech-check">
             <h2>Tech Foul</h2>
             <div id="auto-tech-checkbox" class="check"></div>
@@ -89,11 +97,6 @@
             </select>
         </div>
 
-        <div class="checkbox-label" id="auto-success-check">
-            <h2>Auto Successful</h2>
-            <div id="auto-success-checkbox" class="check"></div>
-        </div>
-
         <div class="button-container">
             <div class="section-button" onclick="switchSection(2, 1)">Back</div>
             <div class="section-button" onclick="switchSection(2, 3); setUpTeleGrid()">Next</div>
@@ -107,6 +110,14 @@
 
             </div>
             <p>High</p>
+        </div>
+
+        <div class="checkbox-label" id="piece-miss-button-container">
+            <h2 id="tele-dropped=pieces-text">Missed Pieces: 0</h2>
+            <div class="horizontal-container">
+                <button class="piece-miss-button" id="tele-dropped-pieces-plus-button" onclick="teleDroppedPieceUpdate(1)">+</button>
+                <button class="piece-miss-button" id="tele-dropped-pieces-minus-button" onclick="teleDroppedPieceUpdate(-1)">-</button>
+            </div>
         </div>
 
         <h1 style="margin-bottom: 0vh;">Issues</h1>
@@ -157,7 +168,7 @@
         </div>
     </div>
     <div id="comments-section" class="section">
-        <h1 style="text-align: center;">Final Comments (Include auto routine)</h1>
+        <h1 style="text-align: center;">Final Comments</h1>
 
         <textarea cols="25" rows="9" id="comments-area"></textarea>
 
@@ -174,18 +185,20 @@
         <div class="button-container">
             <div class="section-button" onclick="switchSection(4, 3)">Back</div>
             <form id="scout-form">
-                <button class="section-button" id="submit-button" type="submit" onclick="switchSection(4, 5)">Submit</button>
+                <button class="section-button" id="submit-button" type="submit"
+                    onclick="switchSection(4, 5)">Submit</button>
             </form>
         </div>
     </div>
     <div id="tylenol-section" class="section">
         <h1 style="text-align: center;">Submitting Response...</h1>
         <h3>While you wait, enjoy this image.</h3>
-        <img id="respect-your-elders-image" src="img/sherril5.png" alt="Won't load :(">
+        <img id="respect-your-elders-image" src="img/sherril5.jpg" alt="Won't load :(">
     </div>
 </body>
 <script src="index.js"></script>
 <script src="post.js"></script>
+<script src="checkSwipe.js"></script>
 <!--
 <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
 <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>-->
