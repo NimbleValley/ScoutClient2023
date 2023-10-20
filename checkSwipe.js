@@ -4,11 +4,11 @@ let touchendX = 0;
 let swipeThresh = 0.33;
     
 function checkDirection() {
-  if (window.innerWidth < window.innerHeight && touchendX < touchstartX && Math.abs(Math.abs(touchendX-touchstartX) / window.innerWidth) > swipeThresh) {
+  if (onSection < 4 && window.innerWidth < window.innerHeight && touchendX < touchstartX && Math.abs(Math.abs(touchendX-touchstartX) / window.innerWidth) > swipeThresh) {
     // Swipe left
     switchSection(onSection, onSection+1);
   }
-  if (window.innerWidth < window.innerHeight && touchendX > touchstartX && Math.abs(Math.abs(touchendX-touchstartX) / window.innerWidth) > swipeThresh) {
+  if (onSection < 5 && window.innerWidth < window.innerHeight && touchendX > touchstartX && Math.abs(Math.abs(touchendX-touchstartX) / window.innerWidth) > swipeThresh) {
     // Swipe right
     switchSection(onSection, onSection-1);
   }

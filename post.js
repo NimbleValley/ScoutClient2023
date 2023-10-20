@@ -186,6 +186,9 @@ scoutForm.addEventListener('submit', e => {
     console.log(telePoints);
 
     var commentsOutput = document.getElementById("comments-area").value;
+    if(commentsOutput == "" || commentsOutput == " " || commentsOutput == null) {
+        commentsOutput = nameInput.value + " didn't write a comment :(";
+    }
 
     data = {
         "Name": nameInput.value,
@@ -219,6 +222,7 @@ scoutForm.addEventListener('submit', e => {
         "Disabled": teleDisabledOutput,
         "Poor Decisions/Unintelligent": dumbOutput,
         "Reckless": recklessOutput,
+        "Intook From": pickupMethodSelect.value,
         "Comments": commentsOutput
     };
 
@@ -282,4 +286,6 @@ function resetForm() {
     teleParkCheck.style.transform = "";
     teleParkCheck.style.opacity = 1;
     document.getElementById("comments-area").value = "";
+
+    onSection = 0;
 }

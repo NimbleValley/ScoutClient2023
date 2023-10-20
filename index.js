@@ -126,6 +126,10 @@ autoChargeOutcomeSelect.style.display = "none";
 
 
 
+const pickupMethodSelect = document.getElementById("pickup-method");
+
+
+
 var teleTech = false;
 const teleTechCheck = document.getElementById("tele-tech-check");
 
