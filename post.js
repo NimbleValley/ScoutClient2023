@@ -190,9 +190,22 @@ scoutForm.addEventListener('submit', e => {
         commentsOutput = nameInput.value + " didn't write a comment :(";
     }
 
+    var matchNumberOutput = matchInput.value;
+    if(matchNumberOutput == null) {
+        matchNumberOutput = -1;
+    }
+
+    if(teleDroppedPieced == null) {
+        teleDroppedPieced = 0;
+    }
+
+    if(autoDroppedPieced == null) {
+        autoDroppedPieced = 0;
+    }
+
     data = {
         "Name": nameInput.value,
-        "Team Number": teamInput.value,
+        "Team Number": matchNumberOutput,
         "Alliance": allianceSelect.value,
         "Match Number": matchInput.value,
         "Auto Placement": autoGridData,
