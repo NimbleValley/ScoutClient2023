@@ -191,7 +191,7 @@ scoutForm.addEventListener('submit', e => {
     }
 
     var matchNumberOutput = matchInput.value;
-    if(matchNumberOutput == null) {
+    if(matchNumberOutput == null || matchNumberOutput == "" || matchNumberOutput == " ") {
         matchNumberOutput = -1;
     }
 
