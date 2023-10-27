@@ -91,9 +91,9 @@
         <div class="container" id="auto-charge-container" style="margin-top: 5vh">
             <h2>Charge Outcome:</h2>
             <select name="auto-charge" id="auto-charge">
-                <option value="No">Failed</option>
-                <option value="Docked">Docked</option>
-                <option value="Engaged">Engaged</option>
+                <option value="No">Failed (Slid off)</option>
+                <option value="Docked">Docked (Tilted)</option>
+                <option value="Engaged">Engaged (Flat)</option>
             </select>
         </div>
 
@@ -125,7 +125,7 @@
             <select name="pickup-method" id="pickup-method">
                 <option value="Floor">Floor</option>
                 <option value="Single">Single Loading</option>
-                <option value="Double">Double Loading</option>
+                <option value="Double" selected>Double Loading</option>
                 <option value="None">Didn't Cycle</option>
             </select>
         </div>
@@ -167,8 +167,8 @@
         <div class="container" id="tele-charge-container" style="margin-top: 5vh">
             <h2>Charge Outcome:</h2>
             <select name="tele-charge" id="tele-charge">
-                <option value="Docked">Docked</option>
-                <option value="Engaged">Engaged</option>
+                <option value="Docked">Docked (Tilted)</option>
+                <option value="Engaged">Engaged (Flat)</option>
             </select>
         </div>
 
