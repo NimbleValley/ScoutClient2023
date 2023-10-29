@@ -205,9 +205,9 @@ scoutForm.addEventListener('submit', e => {
 
     data = {
         "Name": nameInput.value,
-        "Team Number": matchNumberOutput,
+        "Team Number": teamInput.value,
         "Alliance": allianceSelect.value,
-        "Match Number": matchInput.value,
+        "Match Number": matchNumberOutput,
         "Auto Placement": autoGridData,
         "Auto Points": autoPoints,
         "Tele Placement": teleGridData,
